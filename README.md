@@ -49,4 +49,10 @@ run the `main` method a few times and record the results in a google document/sp
 
 ## Comparative Profiling
 
-Test several different datasets (available in the datasets/ directory). 
+Test several different datasets (available in the datasets/ directory). This can be done by 
+passing an argument to the `main` method when you run it. Where there are `{ }` in the 
+dialog after running the `main` method, you can type "datasetN.data", where "N" is any 
+number 1-6. The larger the number, the larger the data set.
+
+For each data file, record the data printed. As you get up in dataset size, you might want to
+comment out one or more sorting methods due to them taking too long.

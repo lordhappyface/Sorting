@@ -14,69 +14,72 @@ import java.util.stream.Collectors;
  */
 public class SortProfiler
 {
-    /** Loads a dataset file (dataset1.txt by default, or provide a filename as args[0])
+    /** Loads a dataset file (dataset1.data by default, or provide a filename as args[0])
      *  Then it sorts that dataset in several ways.
      */
     public static void main(String[] args)
     {
-        List<String> dataset;
+        List<Integer> dataset;
         if (args.length > 0)
             dataset = loadDataset(args[0]);
         else
-            dataset = loadDataset("dataset1.txt");
+            dataset = loadDataset("dataset1.data");
             
         long start, stop;
         
-        //Selection Sort
-        //int[] datasetCopy1 = copyDataset(dataset);
-        //start = System.nanoTime();
-        //selectionSort(datasetCopy1);
-        //stop = System.nanoTime();
-        //System.out.println("Selection sort on " + datasetCopy1.length + " unsorted items took " + (stop-start) + "ns");
-        
-        //start = System.nanoTime();
-        //selectionSort(datasetCopy1);
-        //stop = System.nanoTime();
-        //System.out.println("Selection sort on " + datasetCopy1.length + " sorted items took " + (stop-start) + "ns");
-        
-        //start = System.nanoTime();
-        //selectionSort(reverse(datasetCopy1));
-        //stop = System.nanoTime();
-        //System.out.println("Selection sort on " + datasetCopy1.length + " reverse sorted items took " + (stop-start) + "ns");
-        
-        //Insertion Sort
-        //int[] datasetCopy2 = copyDataset(dataset);
-        //start = System.nanoTime();
-        //insertionSort(datasetCopy2);
-        //stop = System.nanoTime();
-        //System.out.println("Insertion sort on " + datasetCopy2.length + " unsorted items took " + (stop-start) + "ns");
-        
-        //start = System.nanoTime();
-        //insertionSort(datasetCopy2);
-        //stop = System.nanoTime();
-        //System.out.println("Insertion sort on " + datasetCopy2.length + " sorted items took " + (stop-start) + "ns");
-        
-        //start = System.nanoTime();
-        //insertionSort(reverse(datasetCopy2));
-        //stop = System.nanoTime();
-        //System.out.println("Insertion sort on " + datasetCopy2.length + " reverse sorted items took " + (stop-start) + "ns");
-        
-        //Merge Sort
-        //int[] datasetCopy3 = copyDataset(dataset);
-        //start = System.nanoTime();
-        //mergeSort(datasetCopy3);
-        //stop = System.nanoTime();
-        //System.out.println("Merge sort on " + datasetCopy3.length + " unsorted items took " + (stop-start) + "ns");
-        
-        //start = System.nanoTime();
-        //mergeSort(datasetCopy3);
-        //stop = System.nanoTime();
-        //System.out.println("Merge sort on " + datasetCopy3.length + " sorted items took " + (stop-start) + "ns");
-        
-        //start = System.nanoTime();
-        //insertionSort(reverse(datasetCopy3));
-        //stop = System.nanoTime();
-        //System.out.println("Merge sort on " + datasetCopy3.length + " reverse sorted items took " + (stop-start) + "ns");
+//         //Selection Sort
+//         int[] datasetCopy1 = copyDataset(dataset);
+//         start = System.nanoTime();
+//         selectionSort(datasetCopy1);
+//         stop = System.nanoTime();
+//         System.out.println("Selection sort on " + datasetCopy1.length + " unsorted items took " + (stop-start) + "ns");
+//                 
+//         start = System.nanoTime();
+//         selectionSort(datasetCopy1);
+//         stop = System.nanoTime();
+//         System.out.println("Selection sort on " + datasetCopy1.length + " sorted items took " + (stop-start) + "ns");
+//                 
+//         reverse(datasetCopy1);
+//         start = System.nanoTime();
+//         selectionSort(datasetCopy1);
+//         stop = System.nanoTime();
+//         System.out.println("Selection sort on " + datasetCopy1.length + " reverse sorted items took " + (stop-start) + "ns");
+//                 
+//         //Insertion Sort
+//         int[] datasetCopy2 = copyDataset(dataset);
+//         start = System.nanoTime();
+//         insertionSort(datasetCopy2);
+//         stop = System.nanoTime();
+//         System.out.println("Insertion sort on " + datasetCopy2.length + " unsorted items took " + (stop-start) + "ns");
+//                 
+//         start = System.nanoTime();
+//         insertionSort(datasetCopy2);
+//         stop = System.nanoTime();
+//         System.out.println("Insertion sort on " + datasetCopy2.length + " sorted items took " + (stop-start) + "ns");
+//                 
+//         reverse(datasetCopy2);
+//         start = System.nanoTime();
+//         insertionSort(datasetCopy2);
+//         stop = System.nanoTime();
+//         System.out.println("Insertion sort on " + datasetCopy2.length + " reverse sorted items took " + (stop-start) + "ns");
+//                 
+//         //Merge Sort
+//         int[] datasetCopy3 = copyDataset(dataset);
+//         start = System.nanoTime();
+//         mergeSort(datasetCopy3);
+//         stop = System.nanoTime();
+//         System.out.println("Merge sort on " + datasetCopy3.length + " unsorted items took " + (stop-start) + "ns");
+//                 
+//         start = System.nanoTime();
+//         mergeSort(datasetCopy3);
+//         stop = System.nanoTime();
+//         System.out.println("Merge sort on " + datasetCopy3.length + " sorted items took " + (stop-start) + "ns");
+//                 
+//         reverse(datasetCopy3);
+//         start = System.nanoTime();
+//         insertionSort(datasetCopy3);
+//         stop = System.nanoTime();
+//         System.out.println("Merge sort on " + datasetCopy3.length + " reverse sorted items took " + (stop-start) + "ns");
         
         
     }
@@ -100,7 +103,7 @@ public class SortProfiler
         List<Integer> datasetContent;
         try
         {
-            datasetContent = Files.readAllLines(mazeFile, Charset.forName("UTF-8"))
+            datasetContent = Files.readAllLines(datasetFile, Charset.forName("UTF-8"))
                                   .stream()
                                   .map(e -> Integer.parseInt(e))
                                   .collect(Collectors.toList());
@@ -121,7 +124,7 @@ public class SortProfiler
     private static int[] copyDataset(List<Integer> dataset)
     {
         int[] data = new int[dataset.size()];
-        for(int i = 0; i < list.size(); i++) data[i] = dataset.get(i);
+        for(int i = 0; i < dataset.size(); i++) data[i] = dataset.get(i);
         return data;
     }
     
