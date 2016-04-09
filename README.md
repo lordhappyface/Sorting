@@ -49,3 +49,4 @@ run the `main` method a few times and record the results in a google document/sp
 
 ## Comparative Profiling
 
+Test several different datasets (available in the datasets/ directory). 
